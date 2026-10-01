@@ -4,17 +4,11 @@ import AdminLoginModal from './AdminLoginModal';
 import DatePicker from 'react-datepicker';
 import 'react-datepicker/dist/react-datepicker.css';
 
-const BASE = import.meta.env.BASE_URL || './';
-const getAssetUrl = (path) => {
-  const cleanPath = path.replace(/^\//, '');
-  return BASE.endsWith('/') ? `${BASE}${cleanPath}` : `${BASE}/${cleanPath}`;
-};
-
 const suites = [
   {
     id: 1,
     title: 'Premium Suite Room',
-    image: getAssetUrl('Images/Rooms/225449353.jpg'),
+    image: '/Images/Rooms/225449353.jpg',
     description:
       'Luxury suite room with king-size bed, balcony, Wi-Fi, AC, and scenic views.',
     price: '₹2,500 / night',
@@ -22,7 +16,7 @@ const suites = [
   {
     id: 2,
     title: 'Family Suite Room',
-    image: getAssetUrl('Images/Rooms/1.jpg'),
+    image: '/Images/Rooms/1.jpg',
     description:
       'Spacious suite ideal for families with modern interiors and attached bath.',
     price: '₹2,500 / night',
@@ -39,17 +33,17 @@ const amenities = [
 ];
 
 const galleryImages = [
-  getAssetUrl('Images/Rooms/225449353.jpg'),
-  getAssetUrl('Images/Rooms/1.jpg'),
-  getAssetUrl('Images/Rooms/2.jpg'),
-  getAssetUrl('Images/Rooms/3.jpg'),
-  getAssetUrl('Images/Rooms/4.jpg'),
-  getAssetUrl('Images/Rooms/5.jpg'),
-  getAssetUrl('Images/Rooms/6.jpeg'),
-  getAssetUrl('Images/Rooms/7.jpeg'),
+  '/Images/Rooms/225449353.jpg',
+  '/Images/Rooms/1.jpg',
+  '/Images/Rooms/2.jpg',
+  '/Images/Rooms/3.jpg',
+  '/Images/Rooms/4.jpg',
+  '/Images/Rooms/5.jpg',
+  '/Images/Rooms/6.jpeg',
+  '/Images/Rooms/7.jpeg',
 ];
 
-const fallbackImage = getAssetUrl('Images/Rooms/1.jpg');
+const fallbackImage = '/Images/Rooms/1.jpg';
 
 const generateRefId = (prefix) => `${prefix}-${Date.now().toString().slice(-6)}`;
 
@@ -351,7 +345,8 @@ export default function StayFacilityWebsite() {
       <section
         className="relative flex h-[85vh] items-center justify-center bg-cover bg-center"
         style={{
-          backgroundImage: `url("${getAssetUrl('Images/Rooms/7.jpeg')}")`,
+          backgroundImage:
+            "url('/Images/Rooms/7.jpeg')",
         }}
       >
         <div className="absolute inset-0 bg-black/55"></div>
@@ -388,12 +383,9 @@ export default function StayFacilityWebsite() {
       <section id="about" className="bg-white px-6 py-20">
         <div className="mx-auto grid max-w-6xl items-center gap-12 md:grid-cols-2">
           <img
-            src={getAssetUrl('Images/Rooms/7.jpeg')}
+            src="/Images/Rooms/7.jpeg"
             alt="Stay Facility"
             className="h-[450px] w-full rounded-3xl object-cover shadow-2xl"
-            onError={(e) => {
-              e.currentTarget.src = fallbackImage;
-            }}
           />
 
           <div>
@@ -529,7 +521,7 @@ export default function StayFacilityWebsite() {
           </div>
 
           <img
-            src={getAssetUrl('Images/Dormitory/Dormitory1.JPG')}
+            src="/Images/Dormitory/Dormitory1.JPG"
             alt="Dormitory"
             className="h-[450px] w-full rounded-3xl object-cover shadow-2xl"
             onError={(e) => {
