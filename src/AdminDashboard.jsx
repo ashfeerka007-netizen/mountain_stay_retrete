@@ -21,23 +21,23 @@ export default function AdminDashboard({ onSwitchToSite, onLogout }) {
 
   const fetchBookings = () => {
     fetch('http://localhost:5000/api/bookings')
-      .then((res) => res.json())
-      .then((data) => setBookings(data))
-      .catch((err) => console.error('Failed to fetch bookings:', err));
+      .then((res) => (res.ok ? res.json() : []))
+      .then((data) => setBookings(Array.isArray(data) ? data : []))
+      .catch((err) => console.warn('Failed to fetch bookings:', err));
   };
 
   useEffect(() => {
     let isMounted = true;
     fetch('http://localhost:5000/api/bookings')
-      .then((res) => res.json())
+      .then((res) => (res.ok ? res.json() : []))
       .then((data) => {
         if (isMounted) {
-          setBookings(data);
+          setBookings(Array.isArray(data) ? data : []);
           setLoading(false);
         }
       })
       .catch((err) => {
-        console.error('Failed to fetch bookings:', err);
+        console.warn('Failed to fetch bookings:', err);
         if (isMounted) setLoading(false);
       });
 
